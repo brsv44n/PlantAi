@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serilization)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
 
     id("decompose-configuration")
@@ -87,4 +87,7 @@ dependencies {
     implementation(project(":core:decompose"))
 
     implementation(project(":compose:ui_kit"))
+
+    implementation(project(":feature:root:api"))
+    implementation(project(":feature:root:impl"))
 }

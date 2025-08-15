@@ -23,3 +23,9 @@ dependencyResolutionManagement {
 rootProject.name = "PlantAi"
 include(":app")
 include(":compose:theme")
+include(":compose:ui_kit")
+include(":core:decompose")
+include(":core:di")
+include(":core:utils")
+include(":feature:root:api")
+include(":feature:root:impl")

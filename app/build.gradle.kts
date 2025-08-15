@@ -82,11 +82,16 @@ dependencies {
     implementation(libs.kotlin.inject.runtime)
     ksp(libs.kotlin.inject.ksp)
 
+    //mvi kotlin
+    implementation(libs.mvikotlin.logging)
+    implementation(libs.mvikotlin.timetravel)
+
     implementation(project(":core:di"))
     implementation(project(":core:utils"))
     implementation(project(":core:decompose"))
 
     implementation(project(":compose:ui_kit"))
+    implementation(project(":compose:theme"))
 
     implementation(project(":feature:root:api"))
     implementation(project(":feature:root:impl"))

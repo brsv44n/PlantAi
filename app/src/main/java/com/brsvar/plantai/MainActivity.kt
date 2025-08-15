@@ -5,43 +5,31 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.brsvar.plantai.ui.theme.PlantAiTheme
+import com.arkivanov.decompose.defaultComponentContext
+import com.brsvar.compose.theme.MyDroidPlantAiTheme
+import com.brsvar.compose.ui_kit.LocalScreenRendererFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val rootFactory = (application as App).decomposeDiComponent.rootComponentFactory
+        val component = rootFactory.invoke(componentContext = defaultComponentContext())
+
         setContent {
-            PlantAiTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+            MyDroidPlantAiTheme {
+                CompositionLocalProvider(
+                    LocalScreenRendererFactory provides MyDroidComponentRenderers()
+                ) {
+                    LocalScreenRendererFactory.current.getRenderer(component)(
+                        Modifier.fillMaxSize(),
+                        component
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PlantAiTheme {
-        Greeting("Android")
     }
 }

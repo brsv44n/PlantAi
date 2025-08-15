@@ -81,4 +81,8 @@ dependencies {
     //di
     implementation(libs.kotlin.inject.runtime)
     ksp(libs.kotlin.inject.ksp)
+
+//    implementation(project(":core:di"))
+//    implementation(project(":core:utils"))
+    implementation(project(":core:decompose"))
 }

@@ -9,5 +9,6 @@ android {
 
 dependencies {
     implementation(project(":compose:theme"))
+    implementation(project(":core:decompose"))
     implementation(libs.kotlinx.coroutines.core)
 }

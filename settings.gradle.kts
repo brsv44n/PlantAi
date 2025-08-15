@@ -24,3 +24,4 @@ rootProject.name = "PlantAi"
 include(":app")
 include(":compose:theme")
 include(":compose:ui_kit")
+include(":core:decompose")

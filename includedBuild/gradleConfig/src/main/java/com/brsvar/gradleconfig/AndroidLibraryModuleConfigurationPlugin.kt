@@ -52,8 +52,8 @@ class AndroidLibraryModuleConfigurationPlugin : Plugin<Project> {
 
         target.dependencies {
             add("testImplementation", target.libs.findLibrary("junit").get())
-            add("androidTestImplementation", target.libs.findLibrary("androidx-junit").get())//androidx-junit//1.1.5
-            add("androidTestImplementation", target.libs.findLibrary("androidx-espresso-core").get())//androidx-espresso-core//3.5.1
+            add("androidTestImplementation", target.libs.findLibrary("androidx-junit").get())
+            add("androidTestImplementation", target.libs.findLibrary("androidx-espresso-core").get())
             add("implementation", target.libs.findLibrary("androidx-core-ktx").get())
         }
     }

@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "PlantAi"
 include(":app")
+include(":compose:theme")

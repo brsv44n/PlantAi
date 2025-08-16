@@ -7,11 +7,10 @@ plugins {
 }
 
 android {
-    namespace = "com.brsvar.feature.root.impl"
+    namespace = "com.brsvar.feature.onboarding.impl"
 }
 
 dependencies {
-    implementation(project(":feature:root:api"))
     implementation(project(":feature:onboarding:api"))
 
     implementation(project(":core:decompose"))

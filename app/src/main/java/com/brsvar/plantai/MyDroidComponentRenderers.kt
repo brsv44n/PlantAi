@@ -4,11 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.brsvar.compose.ui_kit.ComponentRendererFactory
 import com.brsvar.core.decompose.DecomposeComponent
+import com.brsvar.feature.onboarding.impl.presentation.root.onboardingRootRenderers
 import com.brsvar.feature.root.impl.presentation.rootRenderers
 
 class MyDroidComponentRenderers : ComponentRendererFactory {
 
-    private val appRenderers = rootRenderers
+    private val appRenderers =
+        rootRenderers + onboardingRootRenderers
 
     override fun getRenderer(component: DecomposeComponent): @Composable (Modifier, DecomposeComponent) -> Unit {
         return appRenderers.entries.firstOrNull {

@@ -95,4 +95,6 @@ dependencies {
 
     implementation(project(":feature:root:api"))
     implementation(project(":feature:root:impl"))
+    implementation(project(":feature:onboarding:api"))
+    implementation(project(":feature:onboarding:impl"))
 }

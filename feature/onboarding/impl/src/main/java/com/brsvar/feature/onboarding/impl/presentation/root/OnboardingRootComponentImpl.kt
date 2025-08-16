@@ -4,10 +4,13 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import com.brsvar.core.decompose.DecomposeComponent
 import com.brsvar.feature.onboarding.api.presentation.OnboardingRootComponent
 import com.brsvar.feature.onboarding.impl.di.OnboardingRootDependencies
+import com.brsvar.feature.onboarding.impl.presentation.main.OnboardingMainComponent
+import com.brsvar.feature.onboarding.impl.presentation.main.OnboardingMainComponentImpl
 import kotlinx.serialization.Serializable
 import me.tatarka.inject.annotations.Inject
 
@@ -47,12 +50,31 @@ class OnboardingRootComponentImpl(
     ): DecomposeComponent {
         return when (config) {
             Config.OnboardingMain -> {
-                TODO()
+                OnboardingMainComponentImpl(
+                    componentContext = componentContext,
+                    output = ::onOnboardingMainOutput
+                )
             }
 
             Config.Login -> {
                 TODO()
             }
+        }
+    }
+
+    private fun onOnboardingMainOutput(output: OnboardingMainComponent.Output) {
+        when (output) {
+            OnboardingMainComponent.Output.OnboardingPass -> this.output.invoke(
+                OnboardingRootComponent.Output.OnboardingPassed
+            )
+
+            OnboardingMainComponent.Output.Exit -> this.output.invoke(
+                OnboardingRootComponent.Output.Exit
+            )
+
+            OnboardingMainComponent.Output.OpenLogin -> navigation.pushNew(
+                Config.Login
+            )
         }
     }
 
